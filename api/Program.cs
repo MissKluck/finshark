@@ -4,6 +4,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+//searches within out appsettings.json
+builder.Services.AddDbContext<ApplicationDBContext>(options =>
+{
+    options.UseSqliteServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+})
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
