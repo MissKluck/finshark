@@ -2,25 +2,22 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using api.Data;
 using Microsoft.EntityFrameworkCore;
-using api.Models
+using api.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
 {
     [Route("api/stock")]
     [ApiController]
-    public class StockController : ControllerBase
+    public class StockController(ApplicationDbContext context) : ControllerBase
     {
-        private readonly ApplicationDBContext _context;
-        public StockController(ApplicationDBContext context)
-        {
-            _context = context;
-        }
-
         [HttpGet]
         public IActionResult GetAll()
         {
-            var stocks = _context.Stocks.ToList(;)
+            var stocks = context.Stocks.ToList();
+            return Ok(stocks);
         }
     }
 }

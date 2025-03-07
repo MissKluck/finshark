@@ -11,6 +11,7 @@ namespace api.Models
     {
         [Key]
         public int Id { get; set; }
+        [MaxLength(100)]
         public string? Title { get; set; }
         public string? Content { get; set; }
         public DateTime CreatedOn { get; set; } = DateTime.Now;

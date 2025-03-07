@@ -7,7 +7,7 @@ using api.Models;
 
 namespace api.Data
 {//a class that allows you to search individual database tables
-    public class ApplicationDBContext(DbContextOptions options) : DbContext(options)
+    public class ApplicationDbContext(DbContextOptions options) : DbContext(options)
     {//this code creates the database for us after it is done searching for the tables
 
         //here we're linking up the database to the code, like how you wire stuff to the back of your tv
