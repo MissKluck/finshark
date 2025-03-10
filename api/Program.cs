@@ -27,7 +27,9 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-app.UseHttpsRedirection();
+app.MapGet("/", () => Results.Redirect($"http://localhost:5183/swagger"));
+
+//app.UseHttpsRedirection();
 
 //if this isn't added, swagger won't work + you get a httpsredirect error
 app.MapControllers();

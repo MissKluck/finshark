@@ -17,6 +17,29 @@ namespace api.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.2");
 
+            modelBuilder.Entity("api.Models.ArticleModel", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Headline")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Story")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Tier")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ArticleModel");
+                });
+
             modelBuilder.Entity("api.Models.Comment", b =>
                 {
                     b.Property<int>("Id")
@@ -33,6 +56,7 @@ namespace api.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Title")
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -42,7 +66,7 @@ namespace api.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("api.Models.Stocks", b =>
+            modelBuilder.Entity("api.Models.Stock", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,7 +87,7 @@ namespace api.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<decimal>("Purchase")
-                        .HasColumnType("decimal(18.2)");
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Symbol")
                         .IsRequired()
@@ -76,14 +100,14 @@ namespace api.Migrations
 
             modelBuilder.Entity("api.Models.Comment", b =>
                 {
-                    b.HasOne("api.Models.Stocks", "Stock")
+                    b.HasOne("api.Models.Stock", "Stock")
                         .WithMany("Comments")
                         .HasForeignKey("StockId");
 
                     b.Navigation("Stock");
                 });
 
-            modelBuilder.Entity("api.Models.Stocks", b =>
+            modelBuilder.Entity("api.Models.Stock", b =>
                 {
                     b.Navigation("Comments");
                 });

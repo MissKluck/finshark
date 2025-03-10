@@ -20,7 +20,7 @@ namespace api.Models
         //connect the comments to the stock model
         public int? StockId { get; set; }
         //Navigation property -> allows us to navigate within our models
-        public Stocks? Stock { get; set; }
+        public Stock? Stock { get; set; }
 
     }
 }

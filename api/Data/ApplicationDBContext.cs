@@ -12,7 +12,9 @@ namespace api.Data
 
         //here we're linking up the database to the code, like how you wire stuff to the back of your tv
         //the tables
-        public DbSet<Stocks> Stocks { get; set; }
+        public DbSet<Stock> Stocks { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<ArticleModel> ArticleModel { get; set; }
     }
+    
 }
